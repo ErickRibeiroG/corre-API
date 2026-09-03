@@ -10,17 +10,12 @@ if str(backend_dir) not in sys.path:
 import uvicorn
 from fastapi import FastAPI
 
-from app.database import Base, engine
 from app.routes import activities, auth
 
 
 @asynccontextmanager
 async def lifespan(app: FastAPI):
-    try:
-        Base.metadata.create_all(bind=engine)
-        print("✅ Conexão com o banco de dados PostgreSQL estabelecida com sucesso!")
-    except Exception as e:
-        print(f"⚠️ Aviso: Banco de dados não conectado (Certifique-se de que o Docker esteja rodando): {e}")
+    print("🚀 Strava Analyzer iniciado!")
     yield
 
 
@@ -36,6 +31,9 @@ def home():
 
 
 if __name__ == "__main__":
-    uvicorn.run("app.main:app", host="127.0.0.1", port=8000, reload=True)
-
-
+    uvicorn.run(
+        "app.main:app",
+        host="127.0.0.1",
+        port=8000,
+        reload=True
+    )

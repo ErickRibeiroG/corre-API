@@ -31,6 +31,4 @@ def callback(
 ):
     exchange_code_for_token(code, db)
 
-    return {
-        "message": "Strava conectado com sucesso!"
-    }
+    return {"message": "Strava conectado com sucesso!"}
