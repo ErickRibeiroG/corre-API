@@ -1,4 +1,7 @@
 import os
+from dotenv import load_dotenv
+
+load_dotenv()
 
 from fastapi import APIRouter, Depends, Request, HTTPException
 from fastapi.responses import RedirectResponse
@@ -38,12 +41,9 @@ def callback(
     # Armazena o athlete_id na sessão criptografada (cookie HTTP-Only)
     request.session["athlete_id"] = athlete_id
 
-    athlete_name = f"{athlete.get('firstname', '')} {athlete.get('lastname', '')}".strip()
-
-    return {
-        "message": f"Strava conectado com sucesso para {athlete_name}!",
-        "athlete_id": athlete_id
-    }
+    # Redireciona o navegador do usuário de volta para o Frontend React
+    frontend_url = os.getenv("FRONTEND_URL", "http://localhost:5173")
+    return RedirectResponse(frontend_url)
 
 
 @router.get("/me")

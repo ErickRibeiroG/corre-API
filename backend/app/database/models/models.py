@@ -1,4 +1,5 @@
 from sqlalchemy import Column, Integer, String, BigInteger, ForeignKey
+from sqlalchemy.orm import relationship
 
 from app.database.connection import Base
 
@@ -9,6 +10,8 @@ class User(Base):
     id = Column(Integer, primary_key=True, index=True)
     name = Column(String, nullable=False)
     email = Column(String, unique=True, nullable=False)
+
+    strava_account = relationship("StravaAccount", back_populates="user", uselist=False)
 
 
 class StravaAccount(Base):
@@ -42,3 +45,5 @@ class StravaAccount(Base):
         Integer,
         nullable=False
     )
+
+    user = relationship("User", back_populates="strava_account")

@@ -139,7 +139,28 @@ Ou diretamente via Uvicorn:
 uvicorn app.main:app --reload
 ```
 
-A API estará disponível em: **`http://127.0.0.1:8000`**
+---
+
+### 8. Executar o Frontend (React + TypeScript)
+
+Em um novo terminal no PowerShell:
+
+1. Navegue até a pasta `frontend`:
+   ```powershell
+   cd c:\caminho\para\o\projeto\strava\frontend
+   ```
+
+2. Instale as dependências do Node:
+   ```powershell
+   npm install
+   ```
+
+3. Inicie o servidor de desenvolvimento do Vite:
+   ```powershell
+   npm run dev
+   ```
+
+O Frontend estará disponível em: **`http://localhost:5173`** 🚀
 
 ---
 

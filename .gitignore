@@ -1,0 +1,27 @@
+# Frontend
+frontend/node_modules/
+frontend/dist/
+frontend/.vite/
+frontend/dist-ssr/
+*.local
+
+# Backend / Python
+__pycache__
+backend/__pycache__/
+backend/*.pyc
+backend/.venv/
+backend/venv/
+strava_token.json
+*.db
+*.sqlite3
+
+# Environment Variables
+.env
+*.env
+!.env.example
+
+# IDE & OS
+.vscode/
+.idea/
+.DS_Store
+Thumbs.db
