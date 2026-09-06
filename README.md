@@ -150,9 +150,13 @@ A API estará disponível em: **`http://127.0.0.1:8000`**
 - **Autenticação Strava (Login)**: [`http://127.0.0.1:8000/auth/login`](http://127.0.0.1:8000/auth/login)
   - Redireciona para o fluxo de autorização OAuth2 do Strava.
 - **Callback Strava**: `GET http://127.0.0.1:8000/auth/callback`
-  - Recebe o código de autorização e gera os tokens de acesso.
-- **Listar Atividades**: `GET http://127.0.0.1:8000/activities`
-  - Retorna a lista de atividades do atleta conectado.
+  - Recebe o código de autorização, salva os tokens no banco e cria a sessão segura do usuário no cookie.
+- **Usuário Atual (Perfil)**: `GET http://127.0.0.1:8000/auth/me`
+  - Retorna as informações do atleta autenticado na sessão atual.
+- **Logout**: `GET http://127.0.0.1:8000/auth/logout`
+  - Encerra a sessão ativa do usuário.
+- **Listar Atividades do Usuário Logado**: `GET http://127.0.0.1:8000/activities`
+  - Retorna a lista de atividades **exclusivamente do atleta autenticado na sessão ativa**.
 
 ---
 

@@ -10,6 +10,12 @@ if str(backend_dir) not in sys.path:
 import uvicorn
 from fastapi import FastAPI
 
+import os
+from dotenv import load_dotenv
+from starlette.middleware.sessions import SessionMiddleware
+
+load_dotenv()
+
 from app.routes import activities, auth
 
 
@@ -20,6 +26,9 @@ async def lifespan(app: FastAPI):
 
 
 app = FastAPI(lifespan=lifespan)
+
+secret_key = os.getenv("SECRET_KEY", "secret_key_default_change_me")
+app.add_middleware(SessionMiddleware, secret_key=secret_key)
 
 app.include_router(auth.router)
 app.include_router(activities.router)
